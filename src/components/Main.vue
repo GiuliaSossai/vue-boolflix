@@ -3,7 +3,7 @@
      <div class="container d-flex flex-wrap">
         <div 
             class="film-card text-center my-3 p-3"
-            v-for="(film, index) in films"
+            v-for="(film, index) in filmsToShow"
             :key="index"
          >
             <p>{{film.title}}</p>
@@ -16,37 +16,41 @@
 </template>
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
 export default {
    name: 'Main',
+   props: {
+      filmsToShow: Array
+   },
+
    components: {
       
    },
    data(){
       return {
-         films: []
+         //films: []
       }
    },
    methods: {
-      getApi(){
-      axios.get("https://api.themoviedb.org/3/search/movie", {
-        params:{
-          api_key: "175c5ba4ca5c3e6fc669aa56a7f621e0",
-          query : "il signore degli anelli"
-        }
-      })
-        .then( response => {
-          this.films = response.data.results;
-          console.log('array films in chiamata api in main:', this.films);
-        })
-        .catch( error => {
-          console.log(error);
-        });
-      }
+      // getApi(){
+      // axios.get("https://api.themoviedb.org/3/search/movie", {
+      //   params:{
+      //    api_key: "baf5fb2944f01007fa0cacf4a54c8366",
+      //    query : "il signore degli anelli"
+      //   }
+      // })
+      //   .then( response => {
+      //     this.films = response.data.results;
+      //     console.log('array films in chiamata api in main:', this.films);
+      //   })
+      //   .catch( error => {
+      //     console.log(error);
+      //   });
+      // }
    },
 
    mounted(){
-      this.getApi();
+      //this.getApi();
    }
 }
 </script>
