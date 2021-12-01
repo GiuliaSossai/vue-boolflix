@@ -16,7 +16,7 @@
 </template>
 
 <script>
-//import axios from 'axios';
+
 export default {
    name: 'Main',
    props: {
@@ -28,29 +28,15 @@ export default {
    },
    data(){
       return {
-         //films: []
+         
       }
    },
    methods: {
-      // getApi(){
-      // axios.get("https://api.themoviedb.org/3/search/movie", {
-      //   params:{
-      //    api_key: "baf5fb2944f01007fa0cacf4a54c8366",
-      //    query : "il signore degli anelli"
-      //   }
-      // })
-      //   .then( response => {
-      //     this.films = response.data.results;
-      //     console.log('array films in chiamata api in main:', this.films);
-      //   })
-      //   .catch( error => {
-      //     console.log(error);
-      //   });
-      // }
+      
    },
 
    mounted(){
-      //this.getApi();
+      
    }
 }
 </script>

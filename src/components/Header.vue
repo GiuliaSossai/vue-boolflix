@@ -1,15 +1,19 @@
 <template>
-   <header class="p-4">
-      <input 
-         type="text" 
-         placeholder="cerca"
-         v-model="search"
-         @keyup.enter="$emit('takeSearch', search)"
-         
-      >
-      <button
-         @click="$emit('takeSearch', search)"
-      >cerca</button>
+   <header class="d-flex justify-content-between align-items-center p-4">
+      <h1>BOOLFLIX</h1>
+      <div>
+         <input
+            class="me-2"
+            type="text" 
+            placeholder="cerca"
+            v-model="search"
+            @keyup.enter="toApp" 
+         >
+         <button
+            @click="toApp"
+         >cerca</button>
+      </div>
+      
    </header>
 </template>
 
@@ -25,7 +29,10 @@ export default {
       }
    },
    methods: {
-      
+      toApp(){
+         this.$emit('takeSearch', this.search);
+         this.search = '';
+      }
    }
 
 }
@@ -37,5 +44,8 @@ export default {
 
    header {
       background-color: #000;
+      h1 {
+         color: red;
+      }
    }
 </style>

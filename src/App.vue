@@ -24,7 +24,8 @@ export default {
   data(){
     return{
       film: '',
-      films: []
+      films: [],
+      type: 'movie'
     }
   },
 
@@ -36,13 +37,15 @@ export default {
     },
 
     getApi(){
-      // axios.get("https://api.themoviedb.org/3/search/movie", {
-      //   params:{
-      //    api_key: "baf5fb2944f01007fa0cacf4a54c8366",
-      //    query: "il signore degli anelli"
-      //   }
-      // })
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=baf5fb2944f01007fa0cacf4a54c8366&query=${this.film}`)
+       axios.get(`https://api.themoviedb.org/3/search/${this.type}`,{  
+        params:{
+          api_key : "baf5fb2944f01007fa0cacf4a54c8366",
+          query : this.film,
+          language: "it-IT"
+        }
+      })
+      //versione estesa:
+      // axios.get(`https://api.themoviedb.org/3/search/movie?api_key=baf5fb2944f01007fa0cacf4a54c8366&query=${this.film}&language=it-IT`)
         .then( response => {
           this.films = response.data.results;
           console.log('array films in chiamata api in main:', this.films);
@@ -55,7 +58,7 @@ export default {
   },
 
   mounted(){
-    //this.getApi();
+
   }
   
 }
