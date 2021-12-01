@@ -1,12 +1,15 @@
 <template>
-   <header>
+   <header class="p-4">
       <input 
          type="text" 
          placeholder="cerca"
          v-model="search"
-         @keyup.enter="getInput"
+         @keyup.enter="$emit('takeSearch', search)"
+         
       >
-      <button>cerca</button>
+      <button
+         @click="$emit('takeSearch', search)"
+      >cerca</button>
    </header>
 </template>
 
@@ -22,9 +25,7 @@ export default {
       }
    },
    methods: {
-      getInput(){
-         console.log(this.search);
-      }
+      
    }
 
 }
@@ -35,6 +36,6 @@ export default {
    @import '../assets/style/generals.scss';
 
    header {
-      font: $main-font;
+      background-color: #000;
    }
 </style>
