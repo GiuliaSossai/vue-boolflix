@@ -3,7 +3,7 @@
 
     <Header @takeSearch="performSearch"/>
 
-    <Main :filmsToShow="films"/>
+    <Main :filmsToShow="films" :seriesToShow="series"/>
 
   </div>
 </template>
@@ -25,7 +25,8 @@ export default {
     return{
       film: '',
       films: [],
-      type: 'movie'
+      type: 'movie',
+      series: []
     }
   },
 
@@ -53,6 +54,26 @@ export default {
         .catch( error => {
           console.log(error);
         });
+
+      // chiamata axios per serie tv
+      this.type= "tv";
+      axios.get(`https://api.themoviedb.org/3/search/${this.type}`,{  
+        params:{
+          api_key : "baf5fb2944f01007fa0cacf4a54c8366",
+          query : this.film,
+          language: "it-IT"
+        }
+        })
+        .then( response => {
+          this.series = response.data.results;
+          console.log('array serie tv in chiamata api in main:', this.series);
+        })
+        .catch( error => {
+          console.log(error);
+        });
+
+      // resetto type
+      this.type = "movie";
     }
 
   },
