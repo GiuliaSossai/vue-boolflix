@@ -25,8 +25,9 @@ export default {
     return{
       film: '',
       films: [],
-      type: 'movie',
-      series: []
+      type: '',
+      series: [],
+      apiUrl: 'https://api.themoviedb.org/3/search/'
     }
   },
 
@@ -38,22 +39,24 @@ export default {
     },
 
     getApi(){
-       axios.get(`https://api.themoviedb.org/3/search/${this.type}`,{  
+      this.type = 'movie';
+      //versione estesa:
+      // axios.get(`https://api.themoviedb.org/3/search/movie?api_key=baf5fb2944f01007fa0cacf4a54c8366&query=${this.film}&language=it-IT`)
+
+      axios.get(`${this.apiUrl}${this.type}`,{  
         params:{
           api_key : "baf5fb2944f01007fa0cacf4a54c8366",
           query : this.film,
           language: "it-IT"
         }
       })
-      //versione estesa:
-      // axios.get(`https://api.themoviedb.org/3/search/movie?api_key=baf5fb2944f01007fa0cacf4a54c8366&query=${this.film}&language=it-IT`)
-        .then( response => {
-          this.films = response.data.results;
-          console.log('array films in chiamata api in main:', this.films);
-        })
-        .catch( error => {
-          console.log(error);
-        });
+      .then( response => {
+        this.films = response.data.results;
+        console.log('array films in chiamata api in main:', this.films);
+      })
+      .catch( error => {
+        console.log(error);
+      });
 
       // chiamata axios per serie tv
       this.type= "tv";
@@ -63,17 +66,14 @@ export default {
           query : this.film,
           language: "it-IT"
         }
-        })
-        .then( response => {
-          this.series = response.data.results;
-          console.log('array serie tv in chiamata api in main:', this.series);
-        })
-        .catch( error => {
-          console.log(error);
-        });
-
-      // resetto type
-      this.type = "movie";
+      })
+      .then( response => {
+        this.series = response.data.results;
+        console.log('array serie tv in chiamata api in main:', this.series);
+      })
+      .catch( error => {
+        console.log(error);
+      });
     }
 
   },
