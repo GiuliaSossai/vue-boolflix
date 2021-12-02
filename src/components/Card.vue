@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center my-3 p-3 flip-card">
+  <div class="text-center flip-card">
      <div class="flip-card-inner">
         <div class="flip-card-front">
            <img 
@@ -10,19 +10,23 @@
 
         <div class="flip-card-back">
             <!-- titolo -->
-            <h3 v-if="picCard.name">{{picCard.name}}</h3>
-            <h3 v-else>{{picCard.title}}</h3>
+            <h3 class="p-3" v-if="picCard.name">{{picCard.name}}</h3>
+            <h3 class="p-3" v-else>{{picCard.title}}</h3>
 
             <!-- titolo originale -->
             <p v-if="picCard.original_name">{{picCard.original_name}}</p>
             <p v-else>{{picCard.original_title}}</p>
 
-            <!-- language -->
+            <!-- lingua -->
             <p v-if="picCard.original_language === 'it'"><country-flag country='it' size='normal'/></p>
             <p v-else-if="picCard.original_language === 'en'"><country-flag country='gb' size='normal'/></p>
             <p v-else>{{picCard.original_language}}</p>
 
-            <h5>{{picCard.vote_average}}</h5>
+            <!-- voto -->
+            <h5 v-if="picCard.vote_average !== 0">
+               Vote: <i v-for="index in Math.floor(picCard.vote_average / 2)" :key="index" class="fas fa-star"></i>
+            </h5>
+            <h5 v-else>Vote: N.A.</h5>
         </div>
      </div>  
   </div>
@@ -54,20 +58,21 @@ export default {
    // }
    .flip-card {
    background-color: transparent;
-   width: 380px;
-   min-height: 300px;
+   width: 24%;
+   height: 450px;
    perspective: 1000px;
+   border: 1px solid #dbdada;
+   perspective: 1000px;
+   margin: 20px 0.5%;
+   color: #fff;
    }
 
    .flip-card-inner {
    position: relative;
    width: 100%;
    height: 100%;
-   text-align: center;
    transition: transform 0.6s;
    transform-style: preserve-3d;
-   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-   overflow: hidden;
    }
 
    .flip-card:hover .flip-card-inner {
@@ -80,16 +85,20 @@ export default {
    height: 100%;
    -webkit-backface-visibility: hidden;
    backface-visibility: hidden;
+      img{
+      overflow: hidden;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      }
    }
 
    .flip-card-front {
-   background-color: #bbb;
-   color: black;
+   background-color: rgb(192, 184, 184);
    }
 
    .flip-card-back {
-   background-color: #2980b9;
-   color: white;
+   background-color: rgb(189, 166, 166);
    transform: rotateY(180deg);
    }
 </style>

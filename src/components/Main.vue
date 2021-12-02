@@ -2,7 +2,7 @@
   <main>
      <div>
         <!-- film -->
-        <h2 class="container m-5">Film Trovati</h2>
+        <h2 class="container text-center p-5">Film Trovati</h2>
         <div class="container d-flex flex-wrap">
             <Card
                :picCard="film"
@@ -12,7 +12,7 @@
         </div>
 
          <!-- TV series -->
-         <h2 class="container m-5">Serie TV</h2>
+         <h2 class="container text-center p-5">Serie TV</h2>
          <div class="container d-flex flex-wrap">
             <Card
                :picCard="serie"
@@ -57,8 +57,13 @@ export default {
    @import '../assets/style/vars.scss';
    @import '../assets/style/generals.scss';
 
-   h2 {
+   main {
+      height: 100%;
+      background-image: linear-gradient(to bottom, #000, #fff);
+      h2 {
       color: #fff;
+      }
    }
+   
 
 </style>
