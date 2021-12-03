@@ -7,12 +7,14 @@
                :src=" `https://image.tmdb.org/t/p/w342/${picCard.poster_path}` "
                :alt="picCard.name || picCard.title"
             >
-            <h5 v-else class="p-4 text-center">{{picCard.name|| picCard.title}}</h5>
+            <div v-else class="placeholder-img">
+               <h5 class="p-4 text-center">{{picCard.name|| picCard.title}}</h5>
+            </div>
         </div>
 
         <div class="flip-card-back p-3">
             <!-- titolo -->
-            <h3 class="text-center mb-4">{{picCard.name|| picCard.title}}</h3>
+            <h3 class="mb-4">{{picCard.name|| picCard.title}}</h3>
 
             <!-- titolo originale -->
             <h5>Titolo originale: {{picCard.original_name || picCard.original_title}}</h5>
@@ -67,7 +69,10 @@ export default {
       border: 2px solid $myRed;
       perspective: 1000px;
       margin: 20px 0.5%;
-      color: #fff;
+      color: rgb(202, 202, 202);
+      h3, .fa-star {
+         color: rgb(245, 244, 244);
+      }
    }
 
    .flip-card-inner {
@@ -94,14 +99,18 @@ export default {
          height: 100%;
          width: 100%;
          }
-   }
-
-   .flip-card-front {
-      background-color: darken($myRed , 40%);
+      .placeholder-img {
+         height: 100%;
+         background-image: url('../assets/img/coverFilm_placeholder.png');
+         img {
+         width: 100%;
+         
+         }
+      }
    }
 
    .flip-card-back {
-      background-color: darken($myRed , 30%);
+      background-color: darken($myRed , 35%);
       transform: rotateY(180deg);
       overflow: hidden;
       .overview {

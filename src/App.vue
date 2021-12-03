@@ -3,7 +3,7 @@
 
     <Header @takeSearch="performSearch"/>
 
-    <Main :filmsToShow="films" :seriesToShow="series"/>
+    <Main :filmsToShow="movie" :seriesToShow="tv"/>
 
   </div>
 </template>
@@ -23,36 +23,35 @@ export default {
 
   data(){
     return{
-      film: '',
-      films: [],
-      type: '',
-      series: [],
-      apiUrl: 'https://api.themoviedb.org/3/search/'
+      itemToSearch: '',
+      movie: [],
+      tv: [],
+      apiUrl: 'https://api.themoviedb.org/3/search/',
+      type: ''
     }
   },
 
   methods: {
     performSearch(item){
-      this.film = item;
-      console.log('valore di input che ricevo in app', this.film);
+      this.itemToSearch = item;
+      console.log('valore di input che ricevo in app', this.itemToSearch);
       this.getApi();
     },
 
     getApi(){
+      //chiamata axios per i film
       this.type = 'movie';
-      //versione estesa:
-      // axios.get(`https://api.themoviedb.org/3/search/movie?api_key=baf5fb2944f01007fa0cacf4a54c8366&query=${this.film}&language=it-IT`)
 
       axios.get(`${this.apiUrl}${this.type}`,{  
         params:{
           api_key : "baf5fb2944f01007fa0cacf4a54c8366",
-          query : this.film,
+          query : this.itemToSearch,
           language: "it-IT"
         }
       })
       .then( response => {
-        this.films = response.data.results;
-        console.log('array films in chiamata api in main:', this.films);
+        this.movie = response.data.results;
+        console.log('array films in chiamata api in main:', this.movie);
       })
       .catch( error => {
         console.log(error);
@@ -63,13 +62,13 @@ export default {
       axios.get(`https://api.themoviedb.org/3/search/${this.type}`,{  
         params:{
           api_key : "baf5fb2944f01007fa0cacf4a54c8366",
-          query : this.film,
+          query : this.itemToSearch,
           language: "it-IT"
         }
       })
       .then( response => {
-        this.series = response.data.results;
-        console.log('array serie tv in chiamata api in main:', this.series);
+        this.tv = response.data.results;
+        console.log('array serie tv in chiamata api in main:', this.tv);
       })
       .catch( error => {
         console.log(error);
@@ -79,7 +78,7 @@ export default {
   },
 
   mounted(){
-
+    
   }
   
 }

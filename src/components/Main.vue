@@ -13,19 +13,22 @@
         <h2 class="container text-center p-5">Film Trovati</h2>
         <div class="container d-flex flex-wrap">
             <Card
-               :picCard="film"
-               v-for="film in filmsToShow"
-               :key="film.id"
+               :picCard="item"
+               v-for="item in filmsToShow"
+               :key="item.id"
             />
         </div>
 
          <!-- TV series -->
          <h2 class="container text-center p-5">Serie TV</h2>
+         <!-- <div class="text-center" v-if="seriesToShow.length = 0 ">
+            <h2>Nessun risultato! Cerca di nuovo!</h2>
+         </div> -->
          <div class="container d-flex flex-wrap">
             <Card
-               :picCard="serie"
-               v-for="serie in seriesToShow"
-               :key="serie.id"
+               :picCard="item"
+               v-for="item in seriesToShow"
+               :key="item.id"
             />
          </div>
                
