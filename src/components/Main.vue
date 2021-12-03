@@ -4,8 +4,8 @@
         <h2>Cosa vuoi vedere?</h2>
      </div>
 
-     <div v-if="filmsToShow.length > 0">
-        <!-- film -->
+      <!-- film -->
+      <div v-if="filmsToShow.length > 0">
         <h2 class="container text-center p-5">Film Trovati</h2>
         <div class="container d-flex flex-wrap">
             <Card
@@ -16,12 +16,9 @@
         </div>
       </div>
 
+      <!-- TV series -->
       <div v-if="seriesToShow.length > 0">
-         <!-- TV series -->
          <h2 class="container text-center p-5">Serie TV</h2>
-         <!-- <div class="text-center" v-if="seriesToShow.length = 0 ">
-            <h2>Nessun risultato! Cerca di nuovo!</h2>
-         </div> -->
          <div class="container d-flex flex-wrap">
             <Card
                :picCard="item"
