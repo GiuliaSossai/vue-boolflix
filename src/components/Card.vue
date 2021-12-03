@@ -25,16 +25,16 @@
             <h5 v-else>Lingua: {{picCard.original_language}}</h5>
 
             <!-- voto -->
-            <h4 class="mt-3" v-if="picCard.vote_average !== 0">Voto: 
+            <h5 class="my-3" v-if="picCard.vote_average !== 0">Voto: 
                <i 
                   v-for="(item, index) in 5" 
                   :key="index" 
-                  class="fa-star"
+                  class="fa-star fs-4"
                   :class="index < Math.round(picCard.vote_average / 2) ? 'fas' : 'far' "
                >
                </i>
-            </h4>
-            <h5 class="mt-3" v-else>Voto: non disponibile</h5>
+            </h5>
+            <h5 class="my-3" v-else>Voto: non disponibile</h5>
 
             <!-- descrizione -->
             <div class="overview">{{picCard.overview}}</div>
@@ -66,7 +66,7 @@ export default {
       width: 24%;
       height: 450px;
       perspective: 1000px;
-      border: 2px solid $myRed;
+      //border: 2px solid $myRed;
       perspective: 1000px;
       margin: 20px 0.5%;
       color: rgb(202, 202, 202);
@@ -110,7 +110,8 @@ export default {
    }
 
    .flip-card-back {
-      background-color: darken($myRed , 35%);
+      background-color: #3a3b3d;
+      //background-color: darken($myRed , 35%);
       transform: rotateY(180deg);
       overflow: hidden;
       .overview {

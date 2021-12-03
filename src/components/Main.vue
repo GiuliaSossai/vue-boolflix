@@ -1,12 +1,12 @@
 <template>
   <main>
      <div class="text-center" v-if="filmsToShow.length <= 0 && seriesToShow.length <= 0">
-        <h2>Cosa vuoi vedere?</h2>
+        <h2 class="p-5">Cosa vuoi vedere?</h2>
      </div>
 
       <!-- film -->
       <div v-if="filmsToShow.length > 0">
-        <h2 class="container text-center p-5">Film Trovati</h2>
+        <h2 class="container text-center p-5">FILM</h2>
         <div class="container d-flex flex-wrap">
             <Card
                :picCard="item"
@@ -18,7 +18,7 @@
 
       <!-- TV series -->
       <div v-if="seriesToShow.length > 0">
-         <h2 class="container text-center p-5">Serie TV</h2>
+         <h2 class="container text-center p-5">SERIE TV</h2>
          <div class="container d-flex flex-wrap">
             <Card
                :picCard="item"
@@ -43,18 +43,6 @@ export default {
 
    components: {
      Card 
-   },
-   data(){
-      return {
-         
-      }
-   },
-   methods: {
-      
-   },
-
-   mounted(){
-      
    }
 }
 </script>
@@ -64,11 +52,11 @@ export default {
    @import '../assets/style/generals.scss';
 
    main {
-      height: 100%;
-      background-image: linear-gradient(to bottom, #000, #fff);
+      background-image: linear-gradient(to bottom, #000, #5D5D5D 50%, #fff);
       h2 {
-      color: #fff;
-      }
+         color: #fff;
+         font-size: 50px;
+      }  
    }
 
 </style>

@@ -50,13 +50,13 @@ export default {
    header {
       background-color: #000;
       .logo-img {
-         width: 30%;
+         width: 400px;
          img {
             width: 100%;
          }
       }
       .input-group {
-         width: 30%;
+         width: 300px;
       }
    }
 </style>
