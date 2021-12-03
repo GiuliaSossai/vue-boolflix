@@ -4,11 +4,7 @@
         <h2>Cosa vuoi vedere?</h2>
      </div>
 
-     <!-- <div class="text-center" v-else-if="filmsToShow = [] && seriesToShow.length = 0 ">
-        <h2>Nessun risultato! Cerca di nuovo!</h2>
-     </div> -->
-
-     <div v-else>
+     <div v-if="filmsToShow.length > 0">
         <!-- film -->
         <h2 class="container text-center p-5">Film Trovati</h2>
         <div class="container d-flex flex-wrap">
@@ -18,7 +14,9 @@
                :key="item.id"
             />
         </div>
+      </div>
 
+      <div v-if="seriesToShow.length > 0">
          <!-- TV series -->
          <h2 class="container text-center p-5">Serie TV</h2>
          <!-- <div class="text-center" v-if="seriesToShow.length = 0 ">
@@ -31,8 +29,8 @@
                :key="item.id"
             />
          </div>
-               
-     </div>  
+      </div>         
+      
   </main>
 </template>
 
