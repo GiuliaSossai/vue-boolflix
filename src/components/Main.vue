@@ -1,6 +1,14 @@
 <template>
   <main>
-     <div>
+     <div class="text-center" v-if="filmsToShow.length <= 0 && seriesToShow.length <= 0">
+        <h2>Cosa vuoi vedere?</h2>
+     </div>
+
+     <!-- <div class="text-center" v-else-if="filmsToShow = [] && seriesToShow.length = 0 ">
+        <h2>Nessun risultato! Cerca di nuovo!</h2>
+     </div> -->
+
+     <div v-else>
         <!-- film -->
         <h2 class="container text-center p-5">Film Trovati</h2>
         <div class="container d-flex flex-wrap">
@@ -64,5 +72,5 @@ export default {
       color: #fff;
       }
    }
-   
+
 </style>

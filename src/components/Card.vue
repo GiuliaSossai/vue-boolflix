@@ -20,7 +20,7 @@
             <!-- lingua -->
             <h5 v-if="picCard.original_language === 'it'">Lingua originale: <country-flag country='it' size='normal'/></h5>
             <h5 v-else-if="picCard.original_language === 'en'">Lingua originale: <country-flag country='gb' size='normal'/></h5>
-            <h5 v-else>{{picCard.original_language}}</h5>
+            <h5 v-else>Lingua: {{picCard.original_language}}</h5>
 
             <!-- voto -->
             <h4 class="mt-3" v-if="picCard.vote_average !== 0">Voto: 
@@ -64,7 +64,7 @@ export default {
       width: 24%;
       height: 450px;
       perspective: 1000px;
-      border: 1px solid #dbdada;
+      border: 2px solid $myRed;
       perspective: 1000px;
       margin: 20px 0.5%;
       color: #fff;
@@ -97,15 +97,17 @@ export default {
    }
 
    .flip-card-front {
-      background-color: rgb(192, 184, 184);
+      background-color: darken($myRed , 40%);
    }
 
    .flip-card-back {
-      background-color: rgb(189, 166, 166);
+      background-color: darken($myRed , 30%);
       transform: rotateY(180deg);
+      overflow: hidden;
       .overview {
-         height: 150px;
+         height: 140px;
          overflow: scroll;
+         padding-bottom: 8px;
       }
    }
 </style>
